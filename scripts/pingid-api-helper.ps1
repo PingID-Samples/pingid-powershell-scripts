@@ -13,9 +13,25 @@
 #	Replace with the PingID settings found in the PingID settings file:
 #   Note: Remove any backslash characters from the use_base64_key value.
 
-$org_alias      = "<< orgAlias value from pingid.properties file >>";
-$use_base64_key = "<< use_base64_key value from pingid.properties file >>";
-$token          = "<< token value from pingid.properties file >>";
+#$localRegion   = "eu"
+ $localRegion   = "com"
+
+if ($localRegion -eq "com") {
+	# -- US Region--
+	$org_alias      = "US-Org-Alias";
+	$use_base64_key = "US-base64-key";
+	$token          = "US-token-value";
+} elseIf ($localRegion -eq "eu"){
+	# -- EU Region --
+	$org_alias      = "EU-Org-Alias";
+	$use_base64_key = "EU-base64-key";
+	$token          = "EU-token-value";
+}
+
+#$localPingID   = "https://idpxnyl3m.pingidentity.eu/pingid/rest/4/"
+#$localPingID   = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/"
+$localPingID    = $("https://idpxnyl3m.pingidentity." + $localRegion + "/pingid/rest/4/")
+$logLocation    = "C:\media\Ping\logs"
 $api_version    = "4.9"
 
 function Convert-StringToByteArray {
@@ -151,7 +167,7 @@ function Call-PingID-API {
 	try {
 	    if ($apiEndpoint -eq "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getorgreport/do") {
             $logTimeStamp = Get-Date -f yyyyMMddHHmmss
-    	    $apiResponse = Invoke-WebRequest -Uri $apiEndpoint -Body $apiToken -ContentType "application/json" -Method Post -Outfile E:\pingid-users\pingid-$logTimeStamp.$fileType
+    	    $apiResponse = Invoke-WebRequest -Uri $apiEndpoint -Body $apiToken -ContentType "application/json" -Method Post -Outfile $($logLocation + "\pingid-$logTimeStamp.$fileType")
         } else {
 		    $apiResponse = Invoke-WebRequest -Uri $apiEndpoint -Body $apiToken -ContentType "application/json" -Method Post
 		}

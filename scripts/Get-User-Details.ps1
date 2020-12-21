@@ -33,7 +33,9 @@ param(
 
 
 #	Create the API request and parse the results.
-$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+#$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+ $userDetailsEndpoint = $($localPingID +"getuserdetails/do")
+
 $userDetailsBody = @{
 	"userName" = $UserName
 	"getSameDeviceUsers" = $false

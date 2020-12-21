@@ -33,7 +33,8 @@ param(
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getactivationcode/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getactivationcode/do"
+ $apiEndpoint = $($localPingID +"getactivationcode/do")
 
 $reqBody = @{
 	"userName" = $UserName

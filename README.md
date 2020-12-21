@@ -19,5 +19,9 @@ Requires:
 
 This software is open sourced by Ping Identity but not supported commercially as such. Any questions/issues should go to the Github issues tracker or discuss on the [Ping Identity developer communities] . See also the DISCLAIMER file in this directory.
 
+### Comments
+The Get-PingID-Reports.ps1 is best copied into the ./scripts folder and then run from that locations.
+The script contains multiple references to files local to ./scripts folder
+
 [Ping Identity developer communities]: https://community.pingidentity.com/collaborate
 [Ping Identity Developer Site]: https://developer.pingidentity.com/connect

@@ -55,13 +55,14 @@ param(
 	[string]$Role = "REGULAR"
 )
 
-
 #	Import PingID API helper functions
 . .\pingid-api-helper.ps1
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/adduser/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/adduser/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.eu/pingid/rest/4/adduser/do"
+ $apiEndpoint = $($localPingID +"adduser/do")
 
 $reqBody = @{
 	"userName" = $UserName
@@ -76,7 +77,9 @@ $responsePayload = Call-PingID-API $reqBody $apiEndpoint
 
 
 #	Retrieve the User Details to verify call
-$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+#$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+ $userDetailsEndpoint = $($localPingID +"getuserdetails/do")
+
 $userDetailsBody = @{
 	"userName" = $UserName
 	"getSameDeviceUsers" = $false
