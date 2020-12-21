@@ -39,7 +39,8 @@ param(
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/finalizeofflinepairing/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/finalizeofflinepairing/do"
+ $apiEndpoint = $($localPingID +"finalizeofflinepairing/do")
 
 $reqBody = @{
 	"sessionId" = $SessionId

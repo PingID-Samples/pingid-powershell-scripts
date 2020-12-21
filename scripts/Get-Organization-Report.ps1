@@ -32,7 +32,8 @@ param(
 
 
 #	Create the API request and parse the results.
-$orgReportEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getorgreport/do"
+#$orgReportEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getorgreport/do"
+ $orgReportEndpoint = $($localPingID +"getorgreport/do")
 $orgReportBody = @{
 	"fileType" = $FileType
 }

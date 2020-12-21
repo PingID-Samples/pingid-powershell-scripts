@@ -45,7 +45,8 @@ param(
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/startofflinepairing/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/startofflinepairing/do"
+ $apiEndpoint = $($localPingID +"startofflinepairing/do")
 
 $reqBody = @{
 	"username" = $UserName

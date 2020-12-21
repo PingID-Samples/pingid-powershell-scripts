@@ -33,7 +33,9 @@ param(
 
 
 #	Create the API request and parse the results.
-$getJobStatusEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getjobstatus/do"
+#$getJobStatusEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getjobstatus/do"
+ $getJobStatusEndpoint = $($localPingID +"getjobstatus/do")
+
 $getJobStatusBody = @{
 	"jobToken" = $JobToken
 }

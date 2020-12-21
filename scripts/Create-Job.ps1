@@ -32,7 +32,9 @@ param(
 
 
 #	Create the API request and parse the results.
-$createJobEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/createjob/do"
+#$createJobEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/createjob/do"
+ $createJobEndpoint = $($localPingID +"createjob/do")
+
 $createJobBody = @{
 	"jobType" = $JobType
 }

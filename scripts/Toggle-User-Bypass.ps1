@@ -42,13 +42,14 @@ param(
 	[int]$Minutes = 0
 )
 
-
 #	Import PingID API helper functions
 . .\pingid-api-helper.ps1
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/userbypass/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/userbypass/do"
+ $apiEndpoint = $($localPingID +"userbypass/do")
+
 $secondsToBypass = ($Minutes * 60) + ($Hours * 3600) + ($Days * 86400)
 
 if ($secondsToBypass -eq 0) {
@@ -70,7 +71,8 @@ $responsePayload = Call-PingID-API $reqBody $apiEndpoint
 
 
 #	Retrieve the User Details to verify call
-$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+#$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+ $userDetailsEndpoint = $($localPingID +"getuserdetails/do")
 $userDetailsBody = @{
 	"userName" = $UserName
 	"getSameDeviceUsers" = $false

@@ -33,7 +33,8 @@ param(
 
 
 #	Create the API request and parse the results.
-$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/activateuser/do"
+#$apiEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/activateuser/do"
+ $apiEndpoint = $($localPingID +"activateuser/do")
 
 $reqBody = @{
 	"userName" = $UserName
@@ -43,7 +44,9 @@ $responsePayload = Call-PingID-API $reqBody $apiEndpoint
 
 
 #	Retrieve the User Details to verify call
-$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+#$userDetailsEndpoint = "https://idpxnyl3m.pingidentity.com/pingid/rest/4/getuserdetails/do"
+ $userDetailsEndpoint = $($localPingID +"getuserdetails/do")
+
 $userDetailsBody = @{
 	"userName" = $UserName
 	"getSameDeviceUsers" = $false
